@@ -297,7 +297,7 @@ var _ = Describe("Client", func() {
 					return buf.Read(b)
 				}).AnyTimes()
 				_, err := client.RoundTrip(request)
-				Expect(err).To(MatchError("Headers frame too large: 1338 bytes (max: 1337)"))
+				Expect(err).To(MatchError("HEADERS frame too large: 1338 bytes (max: 1337)"))
 			})
 		})
 

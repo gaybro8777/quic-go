@@ -200,7 +200,7 @@ var _ = Describe("Server", func() {
 			str.EXPECT().CancelWrite(quic.ErrorCode(errorFrameError))
 			err := s.handleRequest(str, qpackDecoder)
 			Expect(err).To(HaveOccurred())
-			Expect(err.Error()).To(ContainSubstring("Headers frame too large"))
+			Expect(err.Error()).To(ContainSubstring("HEADERS frame too large"))
 		})
 
 		It("cancels reading when the body of POST request is not read", func() {

@@ -201,7 +201,7 @@ func (s *Server) handleRequest(str quic.Stream, decoder *qpack.Decoder) error {
 	}
 	if hf.Length > s.maxHeaderBytes() {
 		str.CancelWrite(quic.ErrorCode(errorFrameError))
-		return fmt.Errorf("Headers frame too large: %d bytes (max: %d)", hf.Length, s.maxHeaderBytes())
+		return fmt.Errorf("HEADERS frame too large: %d bytes (max: %d)", hf.Length, s.maxHeaderBytes())
 	}
 	headerBlock := make([]byte, hf.Length)
 	if _, err := io.ReadFull(str, headerBlock); err != nil {

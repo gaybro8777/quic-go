@@ -183,7 +183,7 @@ func (c *client) RoundTrip(req *http.Request) (*http.Response, error) {
 		return nil, errors.New("not a HEADERS frame")
 	}
 	if hf.Length > c.maxHeaderBytes() {
-		return nil, fmt.Errorf("Headers frame too large: %d bytes (max: %d)", hf.Length, c.maxHeaderBytes())
+		return nil, fmt.Errorf("HEADERS frame too large: %d bytes (max: %d)", hf.Length, c.maxHeaderBytes())
 	}
 	headerBlock := make([]byte, hf.Length)
 	if _, err := io.ReadFull(str, headerBlock); err != nil {
